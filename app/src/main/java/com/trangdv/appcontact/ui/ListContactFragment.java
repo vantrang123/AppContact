@@ -1,5 +1,6 @@
 package com.trangdv.appcontact.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +21,6 @@ public class ListContactFragment extends Fragment implements RecyclerAdapter.Ite
     RecyclerView recyclerView;
     FloatingActionButton fabAdd;
 
-    private String[] contactsName = {"Nguyen Van Ti","Nguyen Van Suu", "Nguyen Van Dan",};
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,8 +33,15 @@ public class ListContactFragment extends Fragment implements RecyclerAdapter.Ite
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        RecyclerAdapter adapter = new RecyclerAdapter(contactsName, this);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerAdapter adapter = new RecyclerAdapter(getContext(), layoutManager, this);
         recyclerView.setAdapter(adapter);
 
         ClickAddContact();
@@ -43,18 +49,22 @@ public class ListContactFragment extends Fragment implements RecyclerAdapter.Ite
     }
 
     @Override
-    public void dispatchToEdit(String name) {
+    public void dispatchToEdit(Context context, int id) {
+        ((MainActivity) getActivity()).replace(new EditContactFragment(context, id));
 
     }
 
 
     private void ClickAddContact() {
-
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "add contact", Toast.LENGTH_SHORT).show();
+                dispatchToAdd();
             }
         });
+    }
+
+    private void dispatchToAdd() {
+        ((MainActivity) getActivity()).replace(new AddContactFragment());
     }
 }

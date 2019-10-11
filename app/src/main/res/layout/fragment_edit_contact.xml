@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container_edit"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/img_avatar"
+        android:src="@drawable/ic_account"
+        app:layout_constraintTop_toTopOf="@id/container_edit"
+        app:layout_constraintLeft_toLeftOf="@id/container_edit"
+        app:layout_constraintRight_toRightOf="@id/container_edit"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_line_bottom_text"
+        app:layout_constraintTop_toBottomOf="@id/img_avatar"
+        app:layout_constraintLeft_toLeftOf="@id/container_edit"
+        app:layout_constraintRight_toRightOf="@id/container_edit">
+        <TextView
+            android:id="@+id/tv_name"
+            android:textSize="22sp"
+            android:text="Nguyen Van Ti"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            android:textSize="22sp"
+            android:gravity="center"/>
+        <ImageView
+            android:id="@+id/img_edit_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_edit"/>
+        <ImageView
+            android:id="@+id/img_done_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_done"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_line_bottom_text"
+        app:layout_constraintTop_toBottomOf="@id/rl_name"
+        app:layout_constraintLeft_toLeftOf="@id/container_edit"
+        app:layout_constraintRight_toRightOf="@id/container_edit">
+        <TextView
+            android:id="@+id/tv_phone_number"
+            android:textSize="22sp"
+            android:text="0987666123"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/edt_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            android:textSize="22sp"
+            android:gravity="center"/>
+        <ImageView
+            android:id="@+id/img_edit_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_edit"/>
+        <ImageView
+            android:id="@+id/img_done_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_done"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
