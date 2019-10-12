@@ -94,6 +94,32 @@ public class EditContactFragment extends Fragment{
             }
         });
 
+        imgDoneName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                name = edtName.getText().toString();
+                database.renameItem(database.getItemAt(id), name, phoneNumber);
+                imgDoneName.setVisibility(View.GONE);
+                imgEditName.setVisibility(View.VISIBLE);
+                edtName.setVisibility(View.GONE);
+                tvName.setVisibility(View.VISIBLE);
+                tvName.setText(name);
+            }
+        });
+
+        imgDonePhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                phoneNumber = edtPhone.getText().toString();
+                database.renameItem(database.getItemAt(id), name, phoneNumber);
+                imgDonePhone.setVisibility(View.GONE);
+                imgEditPhone.setVisibility(View.VISIBLE);
+                edtPhone.setVisibility(View.GONE);
+                tvPhoneNumber.setVisibility(View.VISIBLE);
+                tvPhoneNumber.setText(phoneNumber);
+            }
+        });
+
     }
 
 }

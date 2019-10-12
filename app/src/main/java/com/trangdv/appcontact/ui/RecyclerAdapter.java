@@ -18,6 +18,7 @@ import com.trangdv.appcontact.model.Contacts;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements OnDatabaseChangedListeners {
     //private String[] contacts;
     private LayoutInflater mInflater;
+    private int iD;
     Context context;
     LinearLayoutManager layoutManager;
     ItemListener listener;
@@ -63,7 +64,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onNewDatabaseEntryRenamed() {
-
+        notifyItemChanged(iD);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -76,6 +77,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 @Override
                 public void onClick(View view) {
                     listener.dispatchToEdit(context, getLayoutPosition());
+                    iD = getLayoutPosition();
                 }
             });
             /*view.setOnLongClickListener(new View.OnLongClickListener() {
