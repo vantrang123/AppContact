@@ -8,4 +8,5 @@
     <color name="colorDarkGray">#b3b3b3</color>
     <color name="colorSpringGreen">#46b980</color>
     <color name="colorWhiteSmoke">#e9ebee</color>
+    <color name="colorRed">#FF0000</color>
 </resources>

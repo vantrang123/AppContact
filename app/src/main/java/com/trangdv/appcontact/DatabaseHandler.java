@@ -100,6 +100,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
+    public void removeItemWithId(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        String[] whereArgs = {String.valueOf(id)};
+        db.delete(DatabaseItem.TABLE_NAME, "_ID=?", whereArgs);
+        if (changedListeners != null) {
+            changedListeners.onNewDatabaseEntryRemoved();
+        }
+    }
+
     public int getCount() {
 
         SQLiteDatabase db = getReadableDatabase();

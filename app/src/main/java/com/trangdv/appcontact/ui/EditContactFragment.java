@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +20,7 @@ import com.trangdv.appcontact.DatabaseHandler;
 import com.trangdv.appcontact.R;
 import com.trangdv.appcontact.model.Contacts;
 
-public class EditContactFragment extends Fragment{
+public class EditContactFragment extends Fragment {
     private TextView tvName;
     private TextView tvPhoneNumber;
     private ImageView imgEditName;
@@ -28,8 +29,10 @@ public class EditContactFragment extends Fragment{
     private EditText edtPhone;
     private ImageView imgDoneName;
     private ImageView imgDonePhone;
+    private TextView tvDelete;
     private String name;
     private String phoneNumber;
+
     private int id;
 
     Context context;
@@ -42,10 +45,11 @@ public class EditContactFragment extends Fragment{
         database = new DatabaseHandler(context);
         contacts = database.getItemAt(id);
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_edit_contact, container,false);
+        View view = inflater.inflate(R.layout.fragment_edit_contact, container, false);
         tvName = view.findViewById(R.id.tv_name);
         tvPhoneNumber = view.findViewById(R.id.tv_phone_number);
         tvName.setText(contacts.getmName());
@@ -56,6 +60,7 @@ public class EditContactFragment extends Fragment{
         edtPhone = view.findViewById(R.id.edt_phone_number);
         imgDoneName = view.findViewById(R.id.img_done_name);
         imgDonePhone = view.findViewById(R.id.img_done_phone);
+        tvDelete = view.findViewById(R.id.tv_delete);
 
         return view;
     }
@@ -117,6 +122,15 @@ public class EditContactFragment extends Fragment{
                 edtPhone.setVisibility(View.GONE);
                 tvPhoneNumber.setVisibility(View.VISIBLE);
                 tvPhoneNumber.setText(phoneNumber);
+            }
+        });
+
+        tvDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                database.removeItemWithId(database.getItemAt(id).getmId());
+                Toast.makeText(getContext(), "Delete successfully!", Toast.LENGTH_SHORT).show();
+                ((MainActivity) getActivity()).backToList();
             }
         });
 

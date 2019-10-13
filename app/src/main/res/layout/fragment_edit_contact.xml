@@ -103,4 +103,17 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/tv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xóa"
+        android:textSize="22sp"
+        android:textColor="@color/colorRed"
+        app:layout_constraintTop_toBottomOf="@id/rl_phone"
+        app:layout_constraintLeft_toLeftOf="@id/container_edit"
+        app:layout_constraintRight_toRightOf="@id/container_edit"
+        android:layout_marginTop="30dp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
