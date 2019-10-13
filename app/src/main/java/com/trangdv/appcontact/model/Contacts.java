@@ -22,7 +22,7 @@ public class Contacts {
     }
 
     public void setmPhoneNumber(String mPhoneNumber) {
-        this.mPhoneNumber = mPhoneNumber;
+        this.mPhoneNumber = "0" + mPhoneNumber;
     }
 
     public String getmName() {

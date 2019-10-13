@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class ListContactFragment extends Fragment implements RecyclerAdapter.Ite
         View view = inflater.inflate(R.layout.fragment_list_contact, container, false);
         recyclerView = view.findViewById(R.id.rv_account);
         fabAdd = view.findViewById(R.id.fab_add);
+
         return view;
     }
 

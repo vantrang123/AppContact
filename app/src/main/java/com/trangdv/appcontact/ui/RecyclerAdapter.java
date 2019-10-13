@@ -1,9 +1,12 @@
 package com.trangdv.appcontact.ui;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +19,7 @@ import com.trangdv.appcontact.listeners.OnDatabaseChangedListeners;
 import com.trangdv.appcontact.model.Contacts;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements OnDatabaseChangedListeners {
-    //private String[] contacts;
+
     private LayoutInflater mInflater;
     private int iD;
     Context context;
@@ -69,10 +72,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvName;
+        public ImageView imgPhoneCall;
 
         public ViewHolder(@NonNull View view) {
             super(view);
             tvName = view.findViewById(R.id.tv_name);
+            imgPhoneCall = view.findViewById(R.id.img_call);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -80,13 +85,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     iD = getLayoutPosition();
                 }
             });
-            /*view.setOnLongClickListener(new View.OnLongClickListener() {
+
+            imgPhoneCall.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onLongClick(View v) {
-                    listener.dispatchToEdit(context, getLayoutPosition());
-                    return false;
+                public void onClick(View view) {
+                    Intent call = new Intent(Intent.ACTION_DIAL);
+                    call.setData(Uri.parse("tel:" + database.getItemAt(iD).getmPhoneNumber()));
+                    context.startActivity(call);
                 }
-            });*/
+            });
+
         }
     }
 
