@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -37,6 +38,8 @@ public class AddContactFragment extends Fragment {
         edtName = view.findViewById(R.id.edt_name);
         edtPhoneNumber = view.findViewById(R.id.edt_phone_number);
         tvAdd = view.findViewById(R.id.tv_add);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Add Contact");
         return view;
     }
 

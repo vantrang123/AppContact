@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.trangdv.appcontact.DatabaseHandler;
@@ -62,6 +63,8 @@ public class EditContactFragment extends Fragment {
         imgDonePhone = view.findViewById(R.id.img_done_phone);
         tvDelete = view.findViewById(R.id.tv_delete);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Edit Contact");
         return view;
     }
 
